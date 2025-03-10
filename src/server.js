@@ -19,6 +19,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'qrCodePage.html'));
 })
 
+app.get('/form', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'form.html'))
+})
+
 app.use(express.json())
 app.use(cors())
 

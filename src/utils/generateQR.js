@@ -1,8 +1,8 @@
 import QRCode from 'qrcode'
 
-const formURL = 'www.google.com'
+const formURL = 'http://10.104.60.150/form'
 
-QRCode.toFile('form_qr.png', formURL, {
+QRCode.toFile('public/images/form_qr.png', formURL, {
   width: 300,
   margin: 2
 }, (err) => {
