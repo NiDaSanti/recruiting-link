@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate QR Code</title>
+  <script src="https://unpkg.com/htmx.org"></script>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS -->
+</head>
+<body>
+  <div class="container">
+    <h2>Scan the QR Code</h2>
+
+    <!-- HTMX Trigger: This button will trigger the request to generate the QR code -->
+    <button hx-get="/generate-qr" hx-target="#qr-code" hx-swap="outerHTML">
+      Show QR Code
+    </button>
+
+    <!-- Placeholder where the QR code will be inserted -->
+    <div id="qr-code">
+      <!-- Initially, the QR code image will be here -->
+      <img src="/images/form_qr.png" alt="QR Code" />
+    </div>
+  </div>
+</body>
+</html>
