@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Your Info</title>
-    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <title>Candidate Submission Form</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <link rel="stylesheet" href="styles/form-styles.css">
 </head>
 <body>
-    <h2>Submit Your Information</h2>
-    
-    <form hx-post="/submit" hx-target="#response" hx-swap="innerHTML">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <h2>Candidate Submission Form</h2>
+
+    <form hx-post="/submit-form" hx-target="#response-message" hx-swap="innerHTML" hx-on="htmx:afterSwap:this.reset()">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
 
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="position">Position Applied For:</label>
+        <input type="text" id="position" name="position" required>
+
+        <label for="resume">Resume Link:</label>
+        <input type="url" id="resume" name="resume_url" required>
+
         <button type="submit">Submit</button>
     </form>
 
-    <div id="response"></div>
+    <div id="response-message"></div>
 </body>
 </html>
