@@ -1,44 +1,53 @@
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff; /* White background for a clean, minimal look */
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
   min-height: 100vh;
+  height: 100%;
+  color: #333; /* Dark grey text for readability */
 }
 
 /* Main Container */
 .container {
-  background: #fff;
-  padding: 20px;
-  max-width: 800px;
+  background: #ffffff; /* White background for the container */
+  padding: 40px 30px;
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  max-width: 100%; /* Full width */
+  border-radius: 0; /* No rounded corners */
+  box-shadow: none; /* No shadows for a flat design */
   text-align: center;
+  overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
 /* Headings */
 h2 {
-  color: #333;
-  margin-bottom: 10px;
+  color: #333; /* Dark grey for headings */
+  font-size: 2.5rem; /* Larger font for primary heading */
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 h3 {
-  color: #555;
+  color: #333; /* Dark grey for secondary headings */
   margin-top: 15px;
+  font-size: 1.8rem; /* Slightly smaller size for subheadings */
+  font-weight: 500;
 }
 
 /* Job Highlights Container */
 .job-highlights-container {
   text-align: left;
-  background: #fafafa;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  background: #f9f9f9; /* Light grey background for sections */
+  padding: 20px;
+  border-radius: 0; /* No rounded corners */
+  margin-bottom: 30px;
+  border: 1px solid #ddd; /* Light border for separation */
 }
 
 /* Lists */
@@ -49,36 +58,128 @@ ul {
 
 ul li {
   background: #ffffff;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 0; /* No rounded corners */
+  border: 1px solid #ddd; /* Light border for definition */
+  font-size: 1.1rem;
 }
 
 /* Buttons */
 button {
-  background-color: #007bff;
+  background-color: #333; /* Dark grey button color */
   color: white;
   border: none;
-  padding: 12px 20px;
-  margin-top: 15px;
-  border-radius: 5px;
+  padding: 15px 30px;
+  margin-top: 20px;
+  border-radius: 0; /* No rounded corners */
   cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #555; /* Lighter grey on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+button:active {
+  transform: translateY(2px); /* Subtle press effect */
 }
 
 /* QR Code Section */
 #qr-code {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 #qr-code img {
-  max-width: 200px;
-  border: 5px solid #ddd;
-  border-radius: 8px;
+  max-width: 200px; /* Resize QR code */
+  border: none; /* No border around the QR code */
+  border-radius: 0; /* No rounded corners */
+}
+
+/* ===== Responsive Design ===== */
+
+/* Tablets (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 30px 20px; /* Reduce padding */
+  }
+
+  h2 {
+    font-size: 2rem; /* Reduce font size */
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  ul li {
+    font-size: 1rem; /* Adjust text size */
+    padding: 12px;
+  }
+
+  button {
+    padding: 12px 25px; /* Adjust button size */
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px 15px; /* Further reduce padding */
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  ul li {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  #qr-code img {
+    max-width: 150px; /* Smaller QR code on mobile */
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 15px 10px; /* Minimal padding */
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  ul li {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+
+  #qr-code img {
+    max-width: 130px;
+  }
 }

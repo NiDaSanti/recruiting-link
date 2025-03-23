@@ -1,6 +1,6 @@
 import QRCode from 'qrcode'
 
-const formURL = 'http://10.104.60.150/form'
+const formURL = 'http://localhost:3000/form'
 
 QRCode.toFile('public/images/form_qr.png', formURL, {
   width: 300,

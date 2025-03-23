@@ -45,7 +45,7 @@ coverage/
 *.sqlite-journal  
 dump.rdb  
 *.pem  
-
+*.db
 # Next.js (if used)  
 .next/  
 out/  
