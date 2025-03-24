@@ -24,8 +24,13 @@ initializeDB().then((db) => {
   // Serve static files from the "public" folder in the root directory
   app.use(express.static(path.join(__dirname, '../..', 'public'))) // Adjusted path for static files
 
+  // Default route to serve index.html
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../..', 'public', 'index.html'))
+  })
+
   // Use formRoutes for handling form-related routes
-  app.use('/', formRoutes)
+  app.use('/form', formRoutes) // Make sure to handle '/form' specifically
 
   // Start the server
   app.listen(PORT, () => {
