@@ -26,7 +26,7 @@ initializeDB().then((db) => {
 
   // Default route to serve index.html
   app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../..', 'public', 'index.html'))
+    res.sendFile(path.join(__dirname, '../..', 'public', 'qrCodePage.html'))
   })
 
   // Use formRoutes for handling form-related routes
