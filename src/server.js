@@ -21,16 +21,22 @@ app.use(express.json())
 initializeDB().then((db) => {
   app.locals.db = db
 
-  // Serve static files from the "public" folder in the root directory
-  app.use(express.static(path.join(__dirname, '../..', 'public'))) // Static files
+  // Resolve and log the public directory path
+  const publicDirPath = path.join(__dirname, '../..', 'public')
+  console.log('Public Directory Path:', publicDirPath) // Log to check if the path is correct
+  
+  // Serve static files from the "public" folder
+  app.use(express.static(publicDirPath))
 
   // Default route to serve qrCodePage.html
   app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../..', 'public', 'qrCodePage.html')) // Serving the main page
+    const filePath = path.join(publicDirPath, 'qrCodePage.html')
+    console.log('Serving qrCodePage.html from:', filePath) // Log to check the file path
+    res.sendFile(filePath) // Serving the main page
   })
 
   // Use formRoutes for handling form-related routes
-  app.use('/form', formRoutes) // Handling '/form' routes
+  app.use('/form', formRoutes)
 
   // Start the server
   app.listen(PORT, () => {
