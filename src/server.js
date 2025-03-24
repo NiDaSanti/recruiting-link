@@ -22,15 +22,15 @@ initializeDB().then((db) => {
   app.locals.db = db
 
   // Serve static files from the "public" folder in the root directory
-  app.use(express.static(path.join(__dirname, '../..', 'public'))) // Adjusted path for static files
+  app.use(express.static(path.join(__dirname, '../..', 'public'))) // Static files
 
-  // Default route to serve index.html
+  // Default route to serve qrCodePage.html
   app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../..', 'public', 'qrCodePage.html'))
+    res.sendFile(path.join(__dirname, '../..', 'public', 'qrCodePage.html')) // Serving the main page
   })
 
   // Use formRoutes for handling form-related routes
-  app.use('/form', formRoutes) // Make sure to handle '/form' specifically
+  app.use('/form', formRoutes) // Handling '/form' routes
 
   // Start the server
   app.listen(PORT, () => {
