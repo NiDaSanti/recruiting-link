@@ -5,21 +5,22 @@ import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
 import fs from 'fs/promises'
 
-// Load environment variables
 dotenv.config()
 
-// Resolve the file path to the current directory
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Choose database path based on the environment (development/production)
+// Choose database path based on environment
 const env = process.env.NODE_ENV || 'development'
-
-// Make sure you are correctly reading paths from the .env file
 const dbRelativePath =
   env === 'production' ? process.env.PRODUCTION_DB_PATH : process.env.DEVELOPMENT_DB_PATH
+  
+// Add fallback if dbRelativePath is undefined
+if (!dbRelativePath) {
+  throw new Error(`Database path is not defined. Make sure your .env file has the correct DB path.`)
+}
 
-// Resolve the full path relative to your project root (adjust for 'src' folder location)
+// Resolve full path relative to project
 const dbPath = path.resolve(__dirname, '../..', dbRelativePath)
 
 const initializeDB = async () => {
@@ -29,7 +30,6 @@ const initializeDB = async () => {
       driver: sqlite3.Database,
     })
 
-    // Read schema.sql and initialize the DB if needed
     const schema = await fs.readFile(path.join(__dirname, 'schema.sql'), 'utf8')
     await db.exec(schema)
 
