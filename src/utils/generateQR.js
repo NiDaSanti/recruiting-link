@@ -1,6 +1,8 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import QRCode from 'qrcode'
 
-const formURL = 'http://localhost:3000/form'
+const formURL = process.env.NODE_ENV === 'production' ? 'https://recruiting-link.onrender.com/form' : 'http://localhost:3000/form'
 
 QRCode.toFile('public/images/form_qr.png', formURL, {
   width: 300,

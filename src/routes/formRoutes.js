@@ -22,7 +22,7 @@ const __dirname = path.dirname(__filename)
 // })
 
 // Serve form.html
-router.get('/form', (req, res) => {
+router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'public', 'form.html'))
 })
 
