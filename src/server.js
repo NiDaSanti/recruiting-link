@@ -22,7 +22,7 @@ initializeDB().then((db) => {
   app.locals.db = db
 
   // Resolve and log the public directory path
-  const publicDirPath = path.join(__dirname, '../..', 'public')
+  const publicDirPath = path.join(__dirname, '..', 'public')
   console.log('Public Directory Path:', publicDirPath) // Log to check if the path is correct
   
   // Serve static files from the "public" folder
