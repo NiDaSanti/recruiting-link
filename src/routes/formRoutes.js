@@ -1,4 +1,6 @@
 import express from 'express'
+import dotenv from 'dotenv'
+dotenv.config()
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sendEmailNotification from './sendEmailNotification.js'
@@ -7,10 +9,11 @@ const router = express.Router()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+const productionUrl = process.env.NODE_ENV === 'production' ? 'https://recruiting-link.onrender.com/' : 'http://localhost:3000'
 router.use('/', (req, res, next) => {
   const referer = req.get('Referer');
 
-  if (!referer || !referer.includes('localhost:3000')) {
+  if (!referer || !referer.includes(productionUrl)) {
     return res.status(403).send(`
       <html>
         <head>
