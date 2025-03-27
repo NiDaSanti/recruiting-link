@@ -1,185 +1,129 @@
-/* General Styles */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #ffffff; /* White background for a clean, minimal look */
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  min-height: 100vh;
-  height: 100%;
-  color: #333; /* Dark grey text for readability */
 }
 
-/* Main Container */
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #e4ecf4);
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fullscreen Container */
 .container {
-  background: #ffffff; /* White background for the container */
-  padding: 40px 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 4vw;
   width: 100%;
   height: 100%;
-  max-width: 100%; /* Full width */
-  border-radius: 0; /* No rounded corners */
-  box-shadow: none; /* No shadows for a flat design */
-  text-align: center;
-  overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
 /* Headings */
+h2, h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 h2 {
-  color: #333; /* Dark grey for headings */
-  font-size: 2.5rem; /* Larger font for primary heading */
-  margin-bottom: 20px;
-  font-weight: 600;
+  font-size: 2.5rem;
+  color: #111827;
+  font-weight: 700;
 }
 
 h3 {
-  color: #333; /* Dark grey for secondary headings */
-  margin-top: 15px;
-  font-size: 1.8rem; /* Slightly smaller size for subheadings */
-  font-weight: 500;
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 600;
+  border-bottom: 2px solid #d1d5db;
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
 }
 
-/* Job Highlights Container */
+/* Card-style Section */
 .job-highlights-container {
-  text-align: left;
-  background: #f9f9f9; /* Light grey background for sections */
-  padding: 20px;
-  border-radius: 0; /* No rounded corners */
-  margin-bottom: 30px;
-  border: 1px solid #ddd; /* Light border for separation */
+  background-color: #ffffffcc;
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  width: 100%;
+  animation: fadeIn 0.6s ease;
+  flex-grow: 1;
 }
 
-/* Lists */
+/* List */
 ul {
-  list-style-type: none;
-  padding: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 ul li {
-  background: #ffffff;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 0; /* No rounded corners */
-  border: 1px solid #ddd; /* Light border for definition */
-  font-size: 1.1rem;
+  background: #f9fafb;
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  border-left: 4px solid #6366f1;
+  border-radius: 0.75rem;
+  font-size: 1.05rem;
+  color: #374151;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
-/* Buttons */
-button {
-  background-color: #333; /* Dark grey button color */
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  margin-top: 20px;
-  border-radius: 0; /* No rounded corners */
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background 0.3s ease, transform 0.2s ease;
+ul li:hover {
+  background: #eef2ff;
+  transform: translateY(-2px);
 }
 
-button:hover {
-  background-color: #555; /* Lighter grey on hover */
-  transform: translateY(-2px); /* Subtle lift effect */
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-button:active {
-  transform: translateY(2px); /* Subtle press effect */
-}
-
-/* QR Code Section */
-#qr-code {
-  margin-top: 30px;
-}
-
-#qr-code img {
-  max-width: 200px; /* Resize QR code */
-  border: none; /* No border around the QR code */
-  border-radius: 0; /* No rounded corners */
-}
-
-/* ===== Responsive Design ===== */
-
-/* Tablets (max-width: 1024px) */
-@media screen and (max-width: 1024px) {
+/* Responsive Tweaks */
+@media (max-width: 1024px) {
   .container {
-    padding: 30px 20px; /* Reduce padding */
+    padding: 6vw;
+  }
+
+  .job-highlights-container {
+    padding: 2rem;
   }
 
   h2 {
-    font-size: 2rem; /* Reduce font size */
+    font-size: 2rem;
   }
 
   h3 {
-    font-size: 1.5rem;
-  }
-
-  ul li {
-    font-size: 1rem; /* Adjust text size */
-    padding: 12px;
-  }
-
-  button {
-    padding: 12px 25px; /* Adjust button size */
-    font-size: 0.95rem;
+    font-size: 1.15rem;
   }
 }
 
-/* Mobile (max-width: 768px) */
-@media screen and (max-width: 768px) {
+@media (max-width: 600px) {
   .container {
-    padding: 20px 15px; /* Further reduce padding */
+    padding: 5vw;
   }
 
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  h3 {
-    font-size: 1.4rem;
+  .job-highlights-container {
+    padding: 1.5rem;
   }
 
   ul li {
     font-size: 0.95rem;
-    padding: 10px;
-  }
-
-  button {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  #qr-code img {
-    max-width: 150px; /* Smaller QR code on mobile */
-  }
-}
-
-/* Small Mobile (max-width: 480px) */
-@media screen and (max-width: 480px) {
-  .container {
-    padding: 15px 10px; /* Minimal padding */
-  }
-
-  h2 {
-    font-size: 1.6rem;
-  }
-
-  h3 {
-    font-size: 1.3rem;
-  }
-
-  ul li {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
-
-  button {
-    padding: 8px 15px;
-    font-size: 0.85rem;
-  }
-
-  #qr-code img {
-    max-width: 130px;
+    padding: 1rem;
   }
 }
