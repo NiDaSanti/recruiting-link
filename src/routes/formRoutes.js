@@ -71,13 +71,13 @@ router.get('/', (req, res) => {
 
 router.post('/submit-form', async (req, res) => {
   try {
-    const { first_name, last_name, email, phone, position, resume_url } = req.body
+    const { first_name, last_name, email, phone } = req.body
     const db = req.app.locals.db
 
     await db.run(
-      `INSERT INTO candidates (first_name, last_name, email, phone, position_applied, resume_url)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [first_name, last_name, email, phone, position, resume_url]
+      `INSERT INTO candidates (first_name, last_name, email, phone)
+       VALUES (?, ?, ?, ?)`,
+      [first_name, last_name, email, phone]
     )
 
     const fullName = `${first_name} ${last_name}`
