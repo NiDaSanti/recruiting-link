@@ -3,8 +3,11 @@ dotenv.config()
 import nodemailer from 'nodemailer'
 
 const isProduction = process.env.NODE_ENV === 'production'
-
+const host = isProduction ? 'smtp.gmail.com' : 'localhost'
 const transporter = nodemailer.createTransport({
+  host: host,
+  port: 587,
+  secure: process.env.NODE_ENV === 'production' ? true : false,
   service: isProduction ? process.env.PRODUCTION_EMAIL_SERVICE : process.env.DEVELOPMENT_EMAIL_SERVICE,
   auth: {
     user:process.env.EMAIL_USER,
