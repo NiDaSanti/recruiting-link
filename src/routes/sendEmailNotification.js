@@ -7,12 +7,15 @@ const host = isProduction ? 'smtp.gmail.com' : 'localhost'
 const transporter = nodemailer.createTransport({
   host: host,
   port: 587,
-  secure: process.env.NODE_ENV === 'production' ? true : false,
-  service: isProduction ? process.env.PRODUCTION_EMAIL_SERVICE : process.env.DEVELOPMENT_EMAIL_SERVICE,
+  secure: false,
+  service: isProduction ? 'gmail' : process.env.DEVELOPMENT_EMAIL_SERVICE,
   auth: {
     user:process.env.EMAIL_USER,
     pass:process.env.EMAIL_PASS,
-  }
+  },
+  tls: {
+    ciphers: 'TLSv1.2',
+  },
 })
 const sendEmailNotification = (candidateName, candidateEmail) => {
   const mailOptions = {
