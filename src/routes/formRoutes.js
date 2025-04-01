@@ -81,7 +81,7 @@ router.post('/submit-form', async (req, res) => {
     )
 
     const fullName = `${first_name} ${last_name}`
-    sendEmailNotification(fullName, email)
+    sendEmailNotification(fullName, email, phone)
 
     console.log(`✅ New candidate submitted: ${fullName} (${email})`)
     res.send(`<p style="color: green;">✅ Thank you, ${fullName}! Your application has been submitted.</p>`)
