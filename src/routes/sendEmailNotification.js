@@ -10,11 +10,8 @@ const transporter = nodemailer.createTransport({
   secure: false,
   service: isProduction ? 'gmail' : process.env.DEVELOPMENT_EMAIL_SERVICE,
   auth: {
-    user:process.env.EMAIL_USER,
-    pass:process.env.EMAIL_PASS,
-  },
-  tls: {
-    ciphers: 'TLSv1.2',
+    user: isProduction ? process.env.PRODUCTION_EMAIL_USER : process.env.DEVELOPMENT_EMAIL_USER,
+    pass: isProduction ? process.env.PRODUCTION_EMAIL_PASS : process.env.DEVELOPMENT_EMAIL_PASS
   },
 })
 const sendEmailNotification = (candidateName, candidateEmail) => {
