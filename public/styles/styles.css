@@ -28,17 +28,17 @@ html, body {
 /* Headings */
 h2, h3 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #111827;
   font-weight: 700;
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #4b5563;
   font-weight: 600;
   border-bottom: 2px solid #d1d5db;
@@ -94,6 +94,12 @@ ul li:hover {
   }
 }
 
+.form-link {
+  margin: 10px;
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 32px;
+}
 /* Responsive Tweaks */
 @media (max-width: 1024px) {
   .container {
@@ -105,11 +111,11 @@ ul li:hover {
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 
   h3 {
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
 }
 
