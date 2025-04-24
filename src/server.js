@@ -2,7 +2,9 @@ import express from 'express'
 import dotenv from 'dotenv'
 import initializeDB from './db/database.js'
 import formRoutes from './routes/formRoutes.js'
+import dashboardRoutes from './routes/dashboardRoutes.js'
 import path from 'path'
+
 
 // Get __dirname in ES module context
 const __filename = new URL(import.meta.url).pathname
@@ -37,6 +39,12 @@ initializeDB().then((db) => {
 
   // Use formRoutes for handling form-related routes
   app.use('/form', formRoutes)
+  
+  // For handling dashboard
+  app.use('/api/dashboard', dashboardRoutes)
+  app.use('/dashboard', (req, res) => {
+  res.sendFile(path.resolve('public/dashboard.html'))
+})
 
   // Start the server
   app.listen(PORT, () => {

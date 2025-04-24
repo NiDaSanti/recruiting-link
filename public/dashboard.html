@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Candidate Dashboard</title>
+  <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+  <link rel="stylesheet" href="/styles/dashboard.css" />
+  <!-- Or: <link rel="stylesheet" href="/styles/dashboard.css" /> if separated -->
+</head>
+<body>
+  <h2>Candidate Submissions</h2>
+
+  <div
+    id="candidates"
+    hx-get="/api/dashboard/candidates"
+    hx-trigger="load, every 5s"
+    hx-swap="innerHTML">
+    Loading candidates...
+  </div>
+</body>
+</html>
