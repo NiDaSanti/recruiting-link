@@ -4,10 +4,10 @@ import initializeDB from './db/database.js'
 import formRoutes from './routes/formRoutes.js'
 import dashboardRoutes from './routes/dashboardRoutes.js'
 import path from 'path'
-
+import { fileURLToPath } from 'url'
 
 // Get __dirname in ES module context
-const __filename = new URL(import.meta.url).pathname
+const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 dotenv.config()
@@ -15,42 +15,42 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 3000
 
-// Middleware to parse incoming requests
+// Middleware to parse requests
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-// Initialize Database
+// Initialize DB
 initializeDB().then((db) => {
   app.locals.db = db
 
-  // Resolve and log the public directory path
   const publicDirPath = path.join(__dirname, '..', 'public')
-  console.log('Public Directory Path:', publicDirPath) // Log to check if the path is correct
-  
-  // Serve static files from the "public" folder
+  console.log('✅ Serving static files from:', publicDirPath)
+
+  // ✅ Serve static files
   app.use(express.static(publicDirPath))
 
-  // Default route to serve qrCodePage.html
+  // ✅ Route: root page
   app.get('/', (req, res) => {
     const filePath = path.join(publicDirPath, 'qrCodePage.html')
-    console.log('Serving qrCodePage.html from:', filePath) // Log to check the file path
-    res.sendFile(filePath) // Serving the main page
+    res.sendFile(filePath)
   })
 
-  // Use formRoutes for handling form-related routes
-  app.use('/form', formRoutes)
-  
-  // For handling dashboard
-  app.use('/api/dashboard', dashboardRoutes)
-  app.use('/dashboard', (req, res) => {
-  res.sendFile(path.resolve('public/dashboard.html'))
-})
+  // ✅ Route: dashboard page (FIXED here)
+  app.get('/dashboard', (req, res) => {
+    const dashboardPath = path.join(publicDirPath, 'dashboard.html')
+    console.log('✅ Serving dashboard from:', dashboardPath)
+    res.sendFile(dashboardPath)
+  })
 
-  // Start the server
+  // ✅ Route groups
+  app.use('/form', formRoutes)
+  app.use('/api/dashboard', dashboardRoutes)
+
+  // ✅ Start server
   app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`)
+    console.log(`🚀 Server running at http://localhost:${PORT}`)
   })
 }).catch((err) => {
-  console.error('Database initialization failed:', err)
-  process.exit(1) // Exit if database initialization fails
+  console.error('❌ Failed to init DB:', err)
+  process.exit(1)
 })
